@@ -1,4 +1,5 @@
 import video.Video;
+import video.pricecode.PriceCode;
 
 import java.util.Date;
 
@@ -17,8 +18,7 @@ public class Rental {
 	public int getPoint(int daysRented) {
 		int eachPoint = 1;
 
-		if ((getVideo().getPriceCode() == Video.NEW_RELEASE) )
-			eachPoint++;
+		eachPoint += getVideo().getPriceCode().getPoint();
 
 		if ( daysRented > getDaysRentedLimit() )
 			eachPoint -= Math.min(eachPoint, getVideo().getLateReturnPointPenalty());

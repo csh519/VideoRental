@@ -1,13 +1,15 @@
 package video;
 
+import video.pricecode.NewRelease;
+import video.pricecode.PriceCode;
+import video.pricecode.Regular;
+
 import java.util.Date;
 
 public abstract class Video {
 	private String title ;
 
-	private int priceCode ;
-	public static final int REGULAR = 1 ;
-	public static final int NEW_RELEASE =2 ;
+	private PriceCode priceCode ;
 
 	private int videoType ;
 	public static final int VHS = 1 ;
@@ -17,7 +19,7 @@ public abstract class Video {
 	private Date registeredDate ;
 	private boolean rented ;
 
-	public Video(String title, int videoType, int priceCode, Date registeredDate) {
+	public Video(String title, int videoType, PriceCode priceCode, Date registeredDate) {
 		this.setTitle(title) ;
 		this.setVideoType(videoType) ;
 		this.setPriceCode(priceCode) ;
@@ -26,12 +28,12 @@ public abstract class Video {
 
 	public abstract int getLateReturnPointPenalty();
 
-	public int getPriceCode() {
+	public PriceCode getPriceCode() {
 		return priceCode;
 	}
 
-	public void setPriceCode(int priceCode) {
-		this.priceCode = priceCode;
+	public void setPriceCode(PriceCode priceCode) {
+		this .priceCode = priceCode;
 	}
 
 	public String getTitle() {

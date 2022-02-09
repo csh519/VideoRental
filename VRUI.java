@@ -200,17 +200,28 @@ public class VRUI {
 			int priceCode = scanner.nextInt();
 
 			Date registeredDate = new Date();
+
 			Video video = createVideo(title, videoType, priceCode, registeredDate);
 			videos.add(video) ;
 		}
 	}
 
 	private Video createVideo(String title, int videoType, int priceCode, Date registeredDate) {
+		PriceCode priceCodeObj = createPriceCode(priceCode);
+
 		return switch (videoType) {
-			case Video.VHS -> new VHS(title, priceCode, registeredDate);
-			case Video.CD -> new CD(title, priceCode, registeredDate);
-			case Video.DVD -> new DVD(title, priceCode, registeredDate);
+			case Video.VHS -> new VHS(title, priceCodeObj, registeredDate);
+			case Video.CD -> new CD(title, priceCodeObj, registeredDate);
+			case Video.DVD -> new DVD(title, priceCodeObj, registeredDate);
 			default -> throw new IllegalStateException("Unexpected value: " + videoType);
+		};
+	}
+
+	private PriceCode createPriceCode(int priceCode) {
+		return switch (priceCode){
+			case PriceCode.REGULAR -> new Regular();
+			case PriceCode.NEW_RELEASE -> new NewRelease();
+			default -> throw new IllegalStateException("Unexpected value: " + priceCode);
 		};
 	}
 

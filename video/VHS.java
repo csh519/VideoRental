@@ -1,10 +1,12 @@
 package video;
 
+import video.pricecode.PriceCode;
+
 import java.util.Date;
 
 public class VHS extends Video{
 
-    public VHS(String title, int priceCode, Date registeredDate) {
+    public VHS(String title, PriceCode priceCode, Date registeredDate) {
         super(title, Video.VHS, priceCode, registeredDate);
     }
 
