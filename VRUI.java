@@ -2,6 +2,9 @@ import video.CD;
 import video.DVD;
 import video.VHS;
 import video.Video;
+import video.pricecode.NewRelease;
+import video.pricecode.PriceCode;
+import video.pricecode.Regular;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -96,8 +99,8 @@ public class VRUI {
 		customers.add(james) ;
 		customers.add(brown) ;
 
-		Video v1 = new CD("v1", Video.REGULAR, new Date()) ;
-		Video v2 = new DVD("v2", Video.NEW_RELEASE, new Date()) ;
+		Video v1 = new CD("v1", new Regular(), new Date()) ;
+		Video v2 = new DVD("v2", new NewRelease(), new Date()) ;
 		videos.add(v1) ;
 		videos.add(v2) ;
 

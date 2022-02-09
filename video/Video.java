@@ -1,8 +1,6 @@
 package video;
 
-import video.pricecode.NewRelease;
 import video.pricecode.PriceCode;
-import video.pricecode.Regular;
 
 import java.util.Date;
 
