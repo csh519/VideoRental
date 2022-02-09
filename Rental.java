@@ -1,3 +1,5 @@
+import video.Video;
+
 import java.util.Date;
 
 public class Rental {
@@ -10,6 +12,35 @@ public class Rental {
 		this.video = video ;
 		rentalStatus = RentalStatus.RENTED ;
 		rentDate = new Date() ;
+	}
+
+	public int getPoint(int daysRented) {
+		int eachPoint = 1;
+
+		if ((getVideo().getPriceCode() == Video.NEW_RELEASE) )
+			eachPoint++;
+
+		if ( daysRented > getDaysRentedLimit() )
+			eachPoint -= Math.min(eachPoint, getVideo().getLateReturnPointPenalty());
+
+		return eachPoint;
+	}
+
+	public double getCharge(int daysRented) {
+		double charge = 0;
+
+		switch (getVideo().getPriceCode()) {
+			case Video.REGULAR:
+				charge += 2;
+				if (daysRented > 2)
+					charge += (daysRented - 2) * 1.5;
+				break;
+			case Video.NEW_RELEASE:
+				charge = daysRented * 3;
+				break;
+		}
+
+		return charge;
 	}
 
 	public Video getVideo() {
@@ -56,7 +87,7 @@ public class Rental {
 	}
 
 	public int getDaysRented() {
-		if (getStatus() == RentalStatus.RETURNED) { // returned Video
+		if (getStatus() == RentalStatus.RETURNED) { // returned video.Video
 			return calcDays(returnDate, rentDate);
 		} else { // not yet returned
 			return calcDays(new Date(), rentDate);

@@ -1,3 +1,5 @@
+package video;
+
 import java.util.Date;
 
 public class DVD extends Video{

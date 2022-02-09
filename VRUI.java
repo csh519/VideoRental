@@ -1,3 +1,8 @@
+import video.CD;
+import video.DVD;
+import video.VHS;
+import video.Video;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -188,7 +193,7 @@ public class VRUI {
 			System.out.println("Enter video title to register: ") ;
 			String title = scanner.next() ;
 
-			System.out.println("Enter video type( 1 for VHD, 2 for CD, 3 for DVD ):") ;
+			System.out.println("Enter video type( 1 for VHD, 2 for video.CD, 3 for video.DVD ):") ;
 			int videoType = scanner.nextInt();
 
 			System.out.println("Enter price code( 1 for Regular, 2 for New Release ):") ;

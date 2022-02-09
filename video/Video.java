@@ -1,3 +1,5 @@
+package video;
+
 import java.util.Date;
 
 public abstract class Video {
