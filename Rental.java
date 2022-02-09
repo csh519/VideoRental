@@ -61,14 +61,15 @@ public class Rental {
 	}
 
 	public int getDaysRented() {
-		int daysRented;
 		if (getStatus() == RentalStatus.RETURNED) { // returned Video
-			long diff = returnDate.getTime() - rentDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+			return calcDays(returnDate, rentDate);
 		} else { // not yet returned
-			long diff = new Date().getTime() - rentDate.getTime();
-			daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
+			return calcDays(new Date(), rentDate);
 		}
-		return daysRented;
+	}
+
+	private int calcDays(Date from, Date to) {
+		long diff = from.getTime() - to.getTime();
+		return (int) (diff / (1000 * 60 * 60 * 24)) + 1;
 	}
 }
