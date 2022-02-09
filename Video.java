@@ -22,15 +22,8 @@ public abstract class Video {
 		this.registeredDate = registeredDate ;
 	}
 
-	public int getLateReturnPointPenalty() {
-		int pentalty = 0 ;
-		switch ( videoType ) {
-			case VHS: pentalty = 1 ; break ;
-			case CD: pentalty = 2 ; break ;
-			case DVD: pentalty = 3 ; break ;
-		}
-		return pentalty ;
-	}
+	public abstract int getLateReturnPointPenalty();
+
 	public int getPriceCode() {
 		return priceCode;
 	}
@@ -70,4 +63,6 @@ public abstract class Video {
 	public void setVideoType(int videoType) {
 		this.videoType = videoType;
 	}
+
+	public abstract int getDaysRentedLimit();
 }

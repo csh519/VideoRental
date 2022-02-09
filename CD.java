@@ -9,4 +9,9 @@ public class CD extends Video {
     public int getLateReturnPointPenalty() {
         return 2;
     }
+
+    @Override
+    public int getDaysRentedLimit() {
+        return 3;
+    }
 }
