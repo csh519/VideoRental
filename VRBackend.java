@@ -3,7 +3,7 @@ import java.util.List;
 public class VRBackend {
 
     public static String getReport(Customer customer) {
-        String result = "Customer Report for " + customer.getName() + "\n";
+        StringBuilder result = new StringBuilder(genHeader(customer));
 
         List<Rental> rentals = customer.getRentals();
 
@@ -15,23 +15,38 @@ public class VRBackend {
             double eachCharge = each.getCharge(daysRented);
             int eachPoint = each.getPoint(daysRented);
 
-            result += "\t" + each.getVideo().getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
-                    + "\tPoint: " + eachPoint + "\n";
+            result.append(genRentResult(each, daysRented, eachCharge, eachPoint));
 
             totalCharge += eachCharge;
             totalPoint += eachPoint ;
         }
 
-        result += "Total charge: " + totalCharge + "\tTotal Point:" + totalPoint + "\n";
+        result.append(genTotalResult(totalCharge, totalPoint));
 
+        popupCouponMessage(totalPoint);
+        return result.toString();
+    }
 
+    private static void popupCouponMessage(int totalPoint) {
         if ( totalPoint >= 10 ) {
             System.out.println("Congrat! You earned one free coupon");
         }
         if ( totalPoint >= 30 ) {
             System.out.println("Congrat! You earned two free coupon");
         }
-        return result ;
+    }
+
+    private static String genHeader(Customer customer) {
+        return "Customer Report for " + customer.getName() + "\n";
+    }
+
+    private static String genTotalResult(double totalCharge, int totalPoint) {
+        return "Total charge: " + totalCharge + "\tTotal Point:" + totalPoint + "\n";
+    }
+
+    private static String genRentResult(Rental each, int daysRented, double eachCharge, int eachPoint) {
+        return "\t" + each.getVideo().getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
+                + "\tPoint: " + eachPoint + "\n";
     }
 
 }
