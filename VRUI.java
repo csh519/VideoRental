@@ -141,7 +141,7 @@ public class VRUI {
 		if ( foundCustomer == null ) {
 			System.out.println("No customer found") ;
 		} else {
-			String result = foundCustomer.getReport() ;
+			String result = VRBackend.getReport(foundCustomer) ;
 			System.out.println(result);
 		}
 	}
