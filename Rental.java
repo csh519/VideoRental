@@ -3,9 +3,9 @@ import video.Video;
 import java.util.Date;
 
 public class Rental {
-	private Video video ;
-	private RentalStatus rentalStatus ;
-	private Date rentDate ;
+	private final Video video ;
+	private final RentalStatus rentalStatus ;
+	private final Date rentDate ;
 	private Date returnDate ;
 
 	public Rental(Video video) {
@@ -33,34 +33,14 @@ public class Rental {
 		return video;
 	}
 
-	public void setVideo(Video video) {
-		this.video = video;
-	}
-
 	public RentalStatus getStatus() {
 		return rentalStatus;
 	}
 
 	public void returnVideo() {
 		if ( rentalStatus == RentalStatus.RETURNED ) {
-			this.rentalStatus = RentalStatus.RETURNED;
 			returnDate = new Date() ;
 		}
-	}
-	public Date getRentDate() {
-		return rentDate;
-	}
-
-	public void setRentDate(Date rentDate) {
-		this.rentDate = rentDate;
-	}
-
-	public Date getReturnDate() {
-		return returnDate;
-	}
-
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
 	}
 
 	public int getDaysRentedLimit() {

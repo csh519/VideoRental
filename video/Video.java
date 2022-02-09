@@ -9,7 +9,6 @@ public abstract class Video {
 
 	private PriceCode priceCode ;
 
-	private int videoType ;
 	public static final int VHS = 1 ;
 	public static final int CD = 2 ;
 	public static final int DVD = 3 ;
@@ -17,9 +16,8 @@ public abstract class Video {
 	private Date registeredDate ;
 	private boolean rented ;
 
-	public Video(String title, int videoType, PriceCode priceCode, Date registeredDate) {
+	public Video(String title, PriceCode priceCode, Date registeredDate) {
 		this.setTitle(title) ;
-		this.setVideoType(videoType) ;
 		this.setPriceCode(priceCode) ;
 		this.registeredDate = registeredDate ;
 	}
@@ -48,22 +46,6 @@ public abstract class Video {
 
 	public void setRented(boolean rented) {
 		this.rented = rented;
-	}
-
-	public Date getRegisteredDate() {
-		return registeredDate;
-	}
-
-	public void setRegisteredDate(Date registeredDate) {
-		this.registeredDate = registeredDate;
-	}
-
-	public int getVideoType() {
-		return videoType;
-	}
-
-	public void setVideoType(int videoType) {
-		this.videoType = videoType;
 	}
 
 	public abstract int getDaysRentedLimit();
