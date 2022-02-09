@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public class Video {
+public abstract class Video {
 	private String title ;
 
 	private int priceCode ;
